@@ -4,21 +4,14 @@ import pandas as pd
 @st.cache
 def load_data():
     data = pd.read_csv("http://logopt.com/data/Pokemon.csv")
+    return data
 
+data = load_data()
 
-st.header("Pokemon Attack Lookup")
-pokemon_name = st.text_input("Enter a Pokemon name:")
+st.title("Pokemon Attack Lookup")
 
-if pokemon_name:
-    data_subset = data[data["Name"].str.contains(pokemon_name, case=False)]
-    if not data_subset.empty:
-        st.write(f"Attack for {pokemon_name}: {data_subset['Attack'].values[0]}")
-    else:
-        st.write("Pokemon not found.")
+name = st.text_input("Enter Pokemon name:")
 
-if pokemon_name:
-    data_subset = data[data["Name"].str.contains(pokemon_name, case=False)]
-    if not data_subset.empty:
-        st.write(f"Attack for {pokemon_name}: {data_subset['Attack'].values[0]}")
-    else:
-        st.write("Pokemon not found.")
+if name:
+    attack = data[data["Name"] == name]["Attack"]
+    st.write(f"Attack of {name} is {attack}")
