@@ -14,4 +14,4 @@ name = st.text_input("Enter Pokemon name:")
 
 if name:
     attack = data[data["Name"] == name]["Attack"]
-    st.write("attack")
+   st.write(f"Attack of {name} is {attack}")
