@@ -6,6 +6,7 @@ def load_data():
     data = pd.read_csv("http://logopt.com/data/Pokemon.csv")
     return data
 
+data = load_data()
 
 st.title("Pokemon Attack Lookup")
 
